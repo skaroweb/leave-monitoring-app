@@ -1,0 +1,9 @@
+{
+    "name": "leave-monitoring-app-root",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "install:all": "npm install --prefix server && npm install --prefix client",
+        "start": "npx --yes concurrently \"npm start --prefix server\" \"npm start --prefix client\""   
+    }
+}   

@@ -1,0 +1,126 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table.table {
+  text-transform: capitalize;
+}
+.card .table td,
+.card .table th {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.table th {
+  background-color: #f2f4f6;
+  color: #1f2937;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+.table > :not(caption) > * > * {
+  border-bottom-width: 0px;
+}
+.table tr:hover {
+  background-color: rgba(46, 54, 80, 0.075);
+}
+.update_btn {
+  background-color: #1d2030;
+  border-color: #1d2030;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+td.text-success {
+  font-weight: 500;
+}
+.add_employee {
+  & i {
+    margin-right: 10px;
+  }
+  all: unset;
+  color: #fff;
+  background: #202536;
+  box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.15),
+    0 1px 1px rgba(46, 54, 80, 0.075);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 100%;
+  margin-left: auto;
+}
+.card .table td > span {
+  margin-right: 8px;
+}
+.nofound {
+  width: 500px;
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+@media (max-width: 768px) {
+  .dashboard {
+    overflow-x: auto;
+  }
+  .card .table th {
+    font-size: 10px;
+    text-align: center;
+  }
+  .card .table td,
+  .card .table th {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 12px;
+    text-align: center;
+  }
+  ::-webkit-scrollbar {
+    width: 12px;
+    background-color: blue;
+  }
+
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #262b40ed;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+  }
+}
+.apply-reason-leave {
+  display: flex;
+}
+.apply-reason-leave > div {
+  margin-right: 10px;
+}
+.without_ampm::-webkit-datetime-edit-ampm-field {
+  display: none;
+}
+input[type="time"]::-webkit-clear-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  margin: -10px;
+}
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}

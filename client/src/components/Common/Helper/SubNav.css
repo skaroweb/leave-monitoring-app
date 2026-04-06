@@ -1,0 +1,31 @@
+.navbar {
+  /* background: #fff; */
+  margin-left: 275px;
+  /* position: sticky;
+  top: 0; */
+  height: 74px;
+}
+.media-body {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  margin-right: 10px;
+}
+.toggle-icon {
+  height: 1.875rem;
+}
+
+.subnav .btn:hover {
+  color: #374151;
+}
+.subnav .btn:hover,
+.subnav .btn:active,
+.subnav .btn:focus {
+  border-color: transparent;
+}
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+    margin-left: unset;
+  }
+}

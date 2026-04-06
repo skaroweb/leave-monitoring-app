@@ -1,0 +1,42 @@
+.fmxw-500 {
+  max-width: 400px !important;
+  padding-top: 20px !important;
+}
+.fmxw-500 > img {
+  width: 120px;
+  display: flex;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.contain {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form-bg-image {
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+}
+span.input-group-text {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-group .form-control {
+  box-shadow: none;
+}
+.input-group-text {
+  background-color: #fff;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-right: 0;
+}
+
+@media (max-width: 768px) {
+  .form-bg-image {
+    background-image: unset !important;
+  }
+}

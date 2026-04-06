@@ -1,0 +1,267 @@
+.card_container {
+  position: relative;
+  width: 260px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid black;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.add_employee {
+  & i {
+    margin-right: 10px;
+  }
+
+  all: unset;
+  color: #fff;
+  background: #202536;
+  box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.15),
+  0 1px 1px rgba(46, 54, 80, 0.075);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 100%;
+  margin-left: auto;
+}
+
+.radio_input {
+  display: flex;
+}
+
+.radio_input>div {
+  margin-right: 10px;
+}
+
+.mod_footer {
+  justify-content: space-between;
+}
+
+.uploadForm {
+  /* visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.3);
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(21, 17, 17, 0.61);
+  display: flex;
+  align-items: center; */
+}
+
+.popup_content {
+  background-color: #fefefe;
+  margin: auto;
+  /* width: 70%; */
+  padding-bottom: 0 !important;
+  padding: 1.25rem 1.5rem;
+  border-radius: 7px;
+}
+
+.card_container_main {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+h3,
+h4 {
+  margin: 0;
+}
+
+.img_container {
+  overflow: hidden;
+  height: 200px;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.img_container img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 16px;
+}
+
+.card_details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card_details h3 {
+  color: #111;
+  font-weight: 500;
+  padding: 8px;
+}
+
+.card-details h4 {
+  color: #333;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.social_media_links_container {
+  position: relative;
+  display: flex;
+  margin-top: 12px;
+}
+
+.social_media_links_container li {
+  list-style: none;
+  margin: 6px;
+}
+
+.social-media-links-container li a {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 1em;
+  color: #444;
+  text-decoration: none;
+  border: 2px solid black;
+  transition: all 500ms;
+}
+
+.social-media-links-container li a:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.img_thumbnail {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  max-width: 100%;
+  height: 100px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.social_link {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.icon_xs {
+  height: 1.25rem;
+}
+
+.view_cta {
+  & i {
+    margin-right: 10px;
+  }
+
+  margin-top: 10px;
+  border: 2px solid #ddd;
+  color: #fff;
+  background-color: #202536;
+  width: 48%;
+  font-size: 13px;
+  padding: 5px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.view_btn {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 82px;
+  align-items: flex-end;
+}
+
+#blah {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: top;
+}
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
+.userBtn {
+  color: #fff;
+  background-color: #202536;
+  border-color: #1e2233;
+  padding: 10px;
+  border-radius: 5px;
+  outline: unset;
+  border: unset;
+}
+
+#removeImage {
+  position: absolute;
+  top: 8px;
+  left: 80px;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 10px;
+  background: #70777b;
+  color: #fff;
+}
+
+.removeImg:hover img {
+  filter: blur(1px);
+}
+
+.removeImg:hover #removeImage {
+  display: flex;
+}
+
+.removeImg {
+  position: relative;
+  display: inline-block;
+}

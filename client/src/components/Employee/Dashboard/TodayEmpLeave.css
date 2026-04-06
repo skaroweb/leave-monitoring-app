@@ -1,0 +1,207 @@
+.leaderboard {
+  box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+.leaderboard {
+  max-width: 33.33%;
+  width: 100%;
+
+  border-radius: 12px;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+.leaderboard:not(:last-child) {
+  margin-right: 20px;
+}
+
+.leaderboard header {
+  --start: 15%;
+  height: 110px;
+  background-image: repeating-radial-gradient(circle at var(--start),
+      transparent 0%,
+      transparent 10%,
+      rgba(54, 89, 219, 0.33) 10%,
+      rgba(54, 89, 219, 0.33) 17%),
+    linear-gradient(to right, #5b7cfa, #3659db);
+  color: #fff;
+  position: relative;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+}
+
+.leaderboard__profiles>p {
+  text-align: center;
+  font-size: 13px;
+}
+
+.leaderboard header .leaderboard__title {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: calc(var(--start) * 0.75);
+  transform: translateY(-50%);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.leaderboard header .leaderboard__title span {
+  display: block;
+}
+
+.leaderboard header .leaderboard__title--top {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 6.5px;
+}
+
+.leaderboard header .leaderboard__title span {
+  display: block;
+}
+
+.leaderboard header .leaderboard__title--bottom {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2.55px;
+  opacity: 0.65;
+  transform: translateY(-2px);
+}
+
+.leaderboard__profiles {
+  background-color: #fff;
+  border-radius: 0 0 12px 12px;
+  padding: 15px 15px 20px;
+  display: grid;
+  align-content: start;
+  row-gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom WebKit Scrollbar */
+.leaderboard__profiles::-webkit-scrollbar {
+  width: 6px;
+}
+
+.leaderboard__profiles::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 12px;
+}
+
+.leaderboard__profiles::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 12px;
+}
+
+.leaderboard__profiles::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.leaderboard__profile {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  align-items: center;
+  padding: 10px 30px 10px 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98),
+    box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+  background-color: #fff;
+}
+
+.leaderboard__picture {
+  max-width: 100%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #ebeef3, 0 0 0 22px #f3f4f6;
+}
+
+.leaderboard__name {
+  color: #979cb0;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.64px;
+  margin-left: 12px;
+  text-transform: capitalize;
+}
+
+.leaderboard__value {
+  color: #35d8ac;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: right;
+}
+
+.leaderboard__value>span {
+  opacity: 0.8;
+  font-weight: 600;
+  font-size: 13px;
+  margin-left: 3px;
+}
+
+.leaderboard__profile:hover {
+  transform: scale(1.1);
+  box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
+}
+
+.Leave_detail_overAll {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 30px;
+}
+
+.leaderboard__profiles.upcoming {
+  grid-template-columns: 1fr;
+  grid-gap: 25px;
+  place-items: center;
+}
+
+.leaderboard__profiles.upcoming>p {
+  grid-area: 1 / 1 / 2 / 3;
+}
+
+.upcoming .leaderboard__profile {
+  grid-template-columns: 1fr 3fr 1.5fr;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+}
+
+.leaderboard__profile.upcoming:hover {
+  box-shadow: unset;
+}
+
+.leaderboard__name,
+.leaderboard__value {
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .Leave_detail_overAll {
+    flex-direction: column;
+  }
+
+  .leaderboard__profiles.upcoming {
+    grid-gap: 12px;
+    grid-template-columns: 1fr;
+  }
+
+  .upcoming .leaderboard__profile {
+    grid-template-columns: 1fr 2fr 1fr;
+    width: 100%;
+  }
+
+  .upcoming .leaderboard__name {
+    margin-left: 0px;
+  }
+
+  .upcoming .leaderboard__name,
+  .upcoming .leaderboard__value {
+    font-size: 12px;
+  }
+}

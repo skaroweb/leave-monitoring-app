@@ -1,0 +1,15 @@
+.icon-xs {
+  height: 1.25rem;
+}
+.view_cta_danger {
+  background-color: rgba(225, 29, 72, var(--bs-bg-opacity)) !important;
+  color: #fff;
+}
+.view_cta_secondary {
+  background-color: rgba(97, 218, 251, var(--bs-bg-opacity)) !important;
+  color: #fff;
+}
+
+.notactive {
+  opacity: 0.2;
+}
