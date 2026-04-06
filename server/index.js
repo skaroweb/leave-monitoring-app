@@ -2,14 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const multer = require("multer");
 const path = require("path");
 const connection = require("./src/Common/config/db");
 const userRoutes = require("./src/Auth/routes/users");
 const authRoutes = require("./src/Auth/routes/auth");
 const employeeInfo = require("./src/Admin/routes/employeeinfo");
 const leaveRoutes = require("./src/Employee/routes/leave");
-const authMiddleware = require("./src/Common/middlewares/authMiddleware");
 const createDefaultAdmin = require("./src/Common/utils/createDefaultAdmin");
 
 app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
@@ -27,9 +25,10 @@ app.use(express.urlencoded({ limit: "50mb" }));
 
 app.use(cors());
 
-app.use("/api/leaves", leaveRoutes);
+
 
 // routes
+app.use("/api/leaves", leaveRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/employeeinfo", employeeInfo);
