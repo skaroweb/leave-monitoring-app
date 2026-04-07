@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import jwt_decode from "jwt-decode";
+import { jwtDecode as jwt_decode } from "jwt-decode";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { employeeAPI } from "./api/index";
 

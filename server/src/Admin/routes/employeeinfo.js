@@ -222,7 +222,7 @@ router.delete("/delete/:id", async (req, res) => {
       return res.status(404).send({ message: "User Not Found" });
 
     if (user.cloudinary_id) {
-      await cloudinary.uploader.destroy(user.cloudinary_id).catch(() => {});
+      await cloudinary.uploader.destroy(user.cloudinary_id).catch(() => { });
     }
 
     if (modelType === "employee") {

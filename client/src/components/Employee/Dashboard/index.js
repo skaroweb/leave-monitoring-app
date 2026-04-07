@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import "./index.css";
 import { leaveAPI } from "../../../api/index";
 import Header from "../../Common/Header";
-import jwt_decode from "jwt-decode";
+import { jwtDecode as jwt_decode } from "jwt-decode";
 //import { useNavigate } from "react-router-dom";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 
