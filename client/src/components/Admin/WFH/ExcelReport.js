@@ -1,14 +1,22 @@
 import React from "react";
-import * as XLSX from "xlsx";
+import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 
-const exportToExcel = (data) => {
-  const workbook = XLSX.utils.book_new();
-  const worksheet = XLSX.utils.json_to_sheet(data);
+const exportToExcel = async (data) => {
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet("Sheet1");
 
-  XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+  if (data && data.length > 0) {
+    const columns = Object.keys(data[0]).map((key) => ({
+      header: key,
+      key: key,
+      width: 20,
+    }));
+    worksheet.columns = columns;
+    worksheet.addRows(data);
+  }
 
-  const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+  const excelBuffer = await workbook.xlsx.writeBuffer();
   const excelBlob = new Blob([excelBuffer], {
     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   });
@@ -38,8 +46,8 @@ const ExcelReport = (props) => {
     }));
   };
 
-  const handleExport = () => {
-    exportToExcel(generateExportData());
+  const handleExport = async () => {
+    await exportToExcel(generateExportData());
   };
   return (
     <div className="export_to_excel">
