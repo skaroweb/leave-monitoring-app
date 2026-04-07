@@ -23,12 +23,18 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb" }));
 
 
+// app.use(cors({
+//   origin: "https://leave-monitoring-app-4izu.onrender.com",
+//   credentials: true
+// }));
+
 app.use(cors({
-  origin: "https://leave-monitoring-app-4izu.onrender.com",
+  origin: [
+    "http://localhost:3000",
+    "https://leave-monitoring-app-4izu.onrender.com"
+  ],
   credentials: true
 }));
-
-
 
 // routes
 app.use("/api/leaves", leaveRoutes);

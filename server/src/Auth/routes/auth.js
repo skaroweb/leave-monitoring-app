@@ -15,8 +15,8 @@ router.post("/", async (req, res, next) => {
     const inputPassword = req.body.password;
 
     // Admin bypass logic using .env config for security
-    const rawAdminEmail = process.env.ADMIN_EMAIL || "tester@skarosoft.com";
-    const rawAdminPassword = process.env.ADMIN_PASSWORD || "Tester@skarosoft123";
+    const rawAdminEmail = process.env.ADMIN_EMAIL;
+    const rawAdminPassword = process.env.ADMIN_PASSWORD;
 
     const adminEmail = rawAdminEmail.replace(/["']/g, "").trim().toLowerCase();
     const adminPassword = rawAdminPassword.replace(/["']/g, "").trim();
