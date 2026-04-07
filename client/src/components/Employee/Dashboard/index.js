@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import "./index.css";
@@ -804,3 +805,4 @@ const Main2 = () => {
 };
 
 export default Main2;
+

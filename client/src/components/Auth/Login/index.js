@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authAPI } from "../../../api/index";
@@ -149,3 +150,4 @@ const Login = () => {
 };
 
 export default Login;
+

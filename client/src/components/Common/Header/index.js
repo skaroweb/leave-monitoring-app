@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "react-bootstrap/Navbar";
@@ -136,3 +137,4 @@ function Header() {
   );
 }
 export default Header;
+

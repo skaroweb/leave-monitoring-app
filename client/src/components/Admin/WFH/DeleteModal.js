@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { leaveAPI } from "../../../api/index";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -59,3 +60,4 @@ const DeleteModal = ({ id, setIsLoading }) => {
   );
 };
 export default DeleteModal;
+

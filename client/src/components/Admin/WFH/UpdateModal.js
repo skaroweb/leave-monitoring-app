@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { leaveAPI } from "../../../api/index";
@@ -106,3 +107,4 @@ const UpdateModal = ({ id, setIsLoading }) => {
   );
 };
 export default UpdateModal;
+

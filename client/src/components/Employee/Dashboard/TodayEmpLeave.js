@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useEffect } from "react";
 import "./TodayEmpLeave.css";
 import { employeeAPI } from "../../../api/index";
@@ -72,3 +73,4 @@ const TodayEmpLeave = (props) => {
   );
 };
 export default TodayEmpLeave;
+

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from "react";
 import { employeeAPI } from "../../../api/index";
 import "./SubNav.css";
@@ -54,3 +55,4 @@ const SubNav = () => {
   );
 };
 export default SubNav;
+

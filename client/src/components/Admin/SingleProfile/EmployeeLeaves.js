@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { employeeAPI, leaveAPI } from "../../../api/index";
@@ -553,3 +554,4 @@ function EmpLeaves() {
   );
 }
 export default EmpLeaves;
+

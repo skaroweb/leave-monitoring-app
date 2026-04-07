@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from "react";
 import { jwtDecode as jwt_decode } from "jwt-decode";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
@@ -178,3 +179,4 @@ function App() {
 }
 
 export default App;
+

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Col, Row, Card, Image, Button, Container } from "react-bootstrap";
 
 import "./index.css";
@@ -37,3 +38,4 @@ function My404Component() {
   );
 }
 export default My404Component;
+

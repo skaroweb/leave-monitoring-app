@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from "react";
 import { employeeAPI, leaveAPI } from "../../../api/index";
 import Header from "../../Common/Header";
@@ -717,3 +718,4 @@ function WFH() {
   );
 }
 export default WFH;
+

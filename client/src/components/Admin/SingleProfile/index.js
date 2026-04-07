@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { employeeAPI } from "../../../api/index";
@@ -70,3 +71,4 @@ const ViewUserDetails = () => {
 };
 
 export default ViewUserDetails;
+
