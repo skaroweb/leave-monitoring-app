@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://leave-monitoring-app.vercel.app"
+    "https://leave-monitoring.netlify.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
