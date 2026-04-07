@@ -68,7 +68,7 @@ router.post("/", upload.single("uploaded_file"), async (req, res) => {
     let cloudinaryId = "";
 
     try {
-      if (process.env.CLOUD_NAME && process.env.CLOUD_NAME !== "your_cloudinary_cloud_name") {
+      if (process.env.CLOUD_NAME) {
         const result = await cloudinary.uploader.upload(req.body.uploaded_file, {
           folder: "profile",
         });
@@ -172,7 +172,7 @@ router.put("/update/:id", async (req, res) => {
     let cloudinaryId = existingUser.cloudinary_id;
 
     try {
-      if (process.env.CLOUD_NAME && process.env.CLOUD_NAME !== "your_cloudinary_cloud_name") {
+      if (process.env.CLOUD_NAME) {
         const result = await cloudinary.uploader.upload(req.body.uploaded_file, {
           folder: "profile",
         });
