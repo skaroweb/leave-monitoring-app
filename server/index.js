@@ -42,7 +42,8 @@ app.use("/api/employeeinfo", employeeInfo);
 app.use("/api/extrawork", require("./src/Employee/routes/extrawork"));
 
 // Server
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
