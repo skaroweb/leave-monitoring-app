@@ -32,7 +32,10 @@ function ExtraWorkStatus() {
     const offset = currentPage * PER_PAGE;
 
     useEffect(() => {
-        employeeAPI.getAll().then((res) => setEmpProfile(res.data)).catch(console.error);
+        employeeAPI.getAll().then((res) => {
+            const activeEmployees = res.data.filter(emp => emp.profilestatus === "Active");
+            setEmpProfile(activeEmployees);
+        }).catch(console.error);
     }, []);
 
     useEffect(() => {

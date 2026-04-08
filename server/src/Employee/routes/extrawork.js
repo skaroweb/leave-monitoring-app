@@ -56,7 +56,7 @@ router.get("/balances", async (req, res) => {
 
         const { year, name, fromdate, todate, status } = req.query;
 
-        let empQuery = {};
+        let empQuery = { profilestatus: "Active" };
         if (name) {
             empQuery._id = name;
         }
