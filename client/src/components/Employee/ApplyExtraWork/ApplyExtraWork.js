@@ -11,6 +11,7 @@ import "../../Admin/OverallReport/index.css";
 import ReactPaginate from "react-paginate";
 import styles from "../../Admin/WFH/DataTable.module.css";
 import { Modal } from 'antd';
+import BalanceSheet from '../../Admin/ExtraWork/BalanceSheet';
 
 function ApplyExtraWork() {
     const adminProfile = useSelector((state) => state.adminProfile);
@@ -34,6 +35,7 @@ function ApplyExtraWork() {
 
     // Pagination
     const [currentPage, setCurrentPage] = useState(0);
+    const [showBalanceSheet, setShowBalanceSheet] = useState(false);
     const PER_PAGE = 10;
     const offset = currentPage * PER_PAGE;
 
@@ -101,6 +103,8 @@ function ApplyExtraWork() {
         setCurrentPage(selectedPage);
     };
 
+    const uniqueYears = [...new Set([new Date().getFullYear(), ...requests.map(item => new Date(item.applydate).getFullYear())])].sort((a, b) => b - a);
+
     const pageCount = Math.ceil(requests.length / PER_PAGE);
 
     const formatTime = (value) => {
@@ -123,15 +127,30 @@ function ApplyExtraWork() {
             <div className="content">
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <h4 className="mb-0">My Extra Work Requests</h4>
-                    <button
-                        className="btn btn-dark"
-                        onClick={() => setIsModalVisible(true)}
-                    >
-                        + Apply Extra Work
-                    </button>
+                    <div>
+                        <button
+                            className="btn btn-outline-dark me-2"
+                            onClick={() => setShowBalanceSheet(!showBalanceSheet)}
+                        >
+                            {showBalanceSheet ? "Hide Balance Sheet" : "Balance Sheet"}
+                        </button>
+                        <button
+                            className="btn btn-dark"
+                            onClick={() => setIsModalVisible(true)}
+                        >
+                            + Apply Extra Work
+                        </button>
+                    </div>
                 </div>
 
-                <div className="overall">
+                {showBalanceSheet ? (
+                    <BalanceSheet 
+                        loggedInUserId={adminProfile?._id} 
+                        uniqueYears={uniqueYears} 
+                        empProfile={[]}
+                    />
+                ) : (
+                    <div className="overall">
                     <div style={{ overflowX: "auto" }}>
                         <table className="user-table align-items-center table table-hover">
                             <thead>
@@ -185,6 +204,7 @@ function ApplyExtraWork() {
                         </div>
                     )}
                 </div>
+                )}
 
                 {/* Ant Design Modal for Application Form */}
                 <Modal

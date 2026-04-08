@@ -9,6 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import ReactPaginate from "react-paginate";
 import styles from "../WFH/DataTable.module.css";
 import BalanceSheet from "./BalanceSheet";
+import { DatePicker } from "antd";
+import dayjs from "dayjs";
 
 function ExtraWorkStatus() {
     const adminProfile = useSelector((state) => state.adminProfile);
@@ -153,11 +155,23 @@ function ExtraWorkStatus() {
                             </div>
                             <div className="filter-from-date">
                                 <label>Filter by from date:</label>
-                                <input className="form-control" type="date" value={selectedDate.fromdate} name="fromdate" onChange={(e) => setSelectedDate({ ...selectedDate, fromdate: e.target.value })} />
+                                <DatePicker 
+                                    style={{ width: "100%", height: "38px" }}
+                                    format="DD-MM-YYYY" 
+                                    value={selectedDate.fromdate ? dayjs(selectedDate.fromdate) : null} 
+                                    onChange={(date) => setSelectedDate({ ...selectedDate, fromdate: date ? date.format("YYYY-MM-DD") : "" })} 
+                                    placeholder="DD-MM-YYYY" 
+                                />
                             </div>
                             <div className="filter-to-date">
                                 <label>Filter by to date:</label>
-                                <input className="form-control" type="date" value={selectedDate.todate} name="todate" onChange={(e) => setSelectedDate({ ...selectedDate, todate: e.target.value })} />
+                                <DatePicker 
+                                    style={{ width: "100%", height: "38px" }}
+                                    format="DD-MM-YYYY" 
+                                    value={selectedDate.todate ? dayjs(selectedDate.todate) : null} 
+                                    onChange={(date) => setSelectedDate({ ...selectedDate, todate: date ? date.format("YYYY-MM-DD") : "" })} 
+                                    placeholder="DD-MM-YYYY" 
+                                />
                             </div>
                             <button className="btn btn-dark pb-2" style={{ height: "40px" }} onClick={DeselectAll}>
                                 Deselect All
@@ -182,7 +196,7 @@ function ExtraWorkStatus() {
                                         filteredList.slice(offset, offset + PER_PAGE).map((item) => (
                                             <tr key={item._id}>
                                                 <td>{empProfile.find(emp => emp._id === item.currentuserid)?.name || item.name}</td>
-                                                <td>{new Date(item.applydate).toLocaleDateString()}</td>
+                                                <td>{item.applydate ? dayjs(item.applydate).format("DD-MM-YYYY") : "-"}</td>
                                                 <td>{item.extraWorkTime || "-"}</td>
                                                 <td>{item.description || "-"}</td>
                                                 <td className={`${item.status === 'reject' ? 'text-danger' :

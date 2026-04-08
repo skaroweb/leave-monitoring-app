@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Table, Spin } from "antd";
+import { Table, Spin, DatePicker } from "antd";
 import { extraWorkAPI } from "../../../api/index";
+import dayjs from "dayjs";
 
-const BalanceSheet = ({ empProfile = [], uniqueYears = [] }) => {
+const BalanceSheet = ({ empProfile = [], uniqueYears = [], loggedInUserId = null }) => {
     const [balances, setBalances] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -18,7 +19,11 @@ const BalanceSheet = ({ empProfile = [], uniqueYears = [] }) => {
                 setLoading(true);
                 const params = {};
                 if (selectedYear) params.year = selectedYear;
-                if (selectedName) params.name = selectedName;
+                if (loggedInUserId) {
+                    params.name = loggedInUserId;
+                } else if (selectedName) {
+                    params.name = selectedName;
+                }
                 if (selectedDate.fromdate) params.fromdate = selectedDate.fromdate;
                 if (selectedDate.todate) params.todate = selectedDate.todate;
                 if (selectedStatus) params.status = selectedStatus;
@@ -32,7 +37,7 @@ const BalanceSheet = ({ empProfile = [], uniqueYears = [] }) => {
             }
         };
         fetchBalances();
-    }, [selectedYear, selectedName, selectedDate, selectedStatus]);
+    }, [selectedYear, selectedName, selectedDate, selectedStatus, loggedInUserId]);
 
     const DeselectAll = () => {
         setselectedName("");
@@ -93,22 +98,36 @@ const BalanceSheet = ({ empProfile = [], uniqueYears = [] }) => {
                         ))}
                     </select>
                 </div>
-                <div className="filter-name">
-                    <label>Filter by name :</label>
-                    <select className="fmxw-200 d-md-inline form-select" value={selectedName} onChange={(e) => setselectedName(e.target.value)}>
-                        <option value="">All</option>
-                        {empProfile.map(emp => (
-                            <option key={emp._id} value={emp._id}>{emp.name}</option>
-                        ))}
-                    </select>
-                </div>
+                {!loggedInUserId && (
+                    <div className="filter-name">
+                        <label>Filter by name :</label>
+                        <select className="fmxw-200 d-md-inline form-select" value={selectedName} onChange={(e) => setselectedName(e.target.value)}>
+                            <option value="">All</option>
+                            {empProfile.map(emp => (
+                                <option key={emp._id} value={emp._id}>{emp.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                )}
                 <div className="filter-from-date">
                     <label>Filter by from date:</label>
-                    <input className="form-control" type="date" value={selectedDate.fromdate} name="fromdate" onChange={(e) => setSelectedDate({ ...selectedDate, fromdate: e.target.value })} />
+                    <DatePicker 
+                        style={{ width: "100%", height: "38px" }}
+                        format="DD-MM-YYYY" 
+                        value={selectedDate.fromdate ? dayjs(selectedDate.fromdate) : null} 
+                        onChange={(date) => setSelectedDate({ ...selectedDate, fromdate: date ? date.format("YYYY-MM-DD") : "" })} 
+                        placeholder="DD-MM-YYYY" 
+                    />
                 </div>
                 <div className="filter-to-date">
                     <label>Filter by to date:</label>
-                    <input className="form-control" type="date" value={selectedDate.todate} name="todate" onChange={(e) => setSelectedDate({ ...selectedDate, todate: e.target.value })} />
+                    <DatePicker 
+                        style={{ width: "100%", height: "38px" }}
+                        format="DD-MM-YYYY" 
+                        value={selectedDate.todate ? dayjs(selectedDate.todate) : null} 
+                        onChange={(date) => setSelectedDate({ ...selectedDate, todate: date ? date.format("YYYY-MM-DD") : "" })} 
+                        placeholder="DD-MM-YYYY" 
+                    />
                 </div>
                 <button className="btn btn-dark pb-2" style={{ height: "40px" }} onClick={DeselectAll}>
                     Deselect All

@@ -243,6 +243,21 @@ const Main2 = () => {
     adminProfile?.isAdmin !== true
       ? listOfUsers.filter((obj) => obj.currentuserid === adminProfile?._id)
       : listOfUsers;
+
+  const groupedUsers = [];
+  filteredListOfUsers.forEach((user) => {
+    const existingGroup = groupedUsers.find(
+      (g) => Math.abs(new Date(g.createdAt) - new Date(user.createdAt)) < 5000 && g.currentuserid === user.currentuserid
+    );
+    if (existingGroup) {
+      if (!existingGroup.applyDates.includes(user.applydate)) {
+        existingGroup.applyDates.push(user.applydate);
+        existingGroup.deleteIds.push(user._id);
+      }
+    } else {
+      groupedUsers.push({ ...user, applyDates: [user.applydate], deleteIds: [user._id] });
+    }
+  });
   // console.log({ test });
 
   const calculateOneWeekLater = (apply) => {
@@ -616,8 +631,8 @@ const Main2 = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredListOfUsers.length > 0 ? (
-                      filteredListOfUsers.map((user, index) => {
+                    {groupedUsers.length > 0 ? (
+                      groupedUsers.map((user, index) => {
                         return (
                           <tr key={index}>
                             <td>
@@ -666,15 +681,19 @@ const Main2 = () => {
                                     ></i>
                                   </OverlayTrigger>
                                 </span>
-                              )}
-                              {new Date(user.applydate).toLocaleDateString(
-                                "en-GB",
-                                {
-                                  day: "2-digit",
-                                  month: "2-digit",
-                                  year: "numeric",
-                                }
-                              )}
+                                )}
+                              {user.applyDates.map((d, i) => (
+                                <div key={i} className={i > 0 ? "mt-1" : ""}>
+                                  {new Date(d).toLocaleDateString(
+                                    "en-GB",
+                                    {
+                                      day: "2-digit",
+                                      month: "2-digit",
+                                      year: "numeric",
+                                    }
+                                  )}
+                                </div>
+                              ))}
                             </td>
                             <td className="text-warning">{user.status}</td>
 
@@ -701,7 +720,7 @@ const Main2 = () => {
                                 <button
                                   className="update_btn"
                                   onClick={() => {
-                                    handleDeleteLeave(user._id);
+                                    user.deleteIds.forEach(id => handleDeleteLeave(id));
                                   }}
                                 >
                                   delete
