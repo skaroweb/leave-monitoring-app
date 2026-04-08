@@ -18,7 +18,7 @@ const userSchema = new Schema(
   { timestamps: true, }
 );
 
-const UserModel = mongoose.model("LeaveStatus", userSchema);
+const UserModel = mongoose.model("LeaveStatus", userSchema, "employees");
 
 const validate = (data) => {
   const schema = Joi.object({

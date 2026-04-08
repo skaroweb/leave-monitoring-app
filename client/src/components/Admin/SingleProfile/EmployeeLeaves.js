@@ -18,7 +18,7 @@ function EmpLeaves() {
   // Selected Month filter
   const [selectedMonth, setSelectedMonth] = useState("");
   // Selected Year filter
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [selectedYear, setSelectedYear] = useState("");
 
   const [selectedStatus, setSelectedStatus] = useState("");
 
@@ -41,6 +41,8 @@ function EmpLeaves() {
       .getAll()
       .then((res) => {
         setEmpProfile(res.data);
+        console.log(res.data);
+
       })
       .catch((err) => console.log(err, "it has an error"));
   }, []);

@@ -1,12 +1,11 @@
 import axios from "axios";
-
-const serverURL = process.env.REACT_APP_SERVER_URL;
-
 // const api = axios.create({
-//     baseURL: serverURL,
+//   baseURL: "http://localhost:5000",
 // });
+
 const api = axios.create({
     baseURL: "https://leave-monitoring.onrender.com",
+    // baseURL: "http://localhost:8080",
 });
 
 export const authAPI = {
