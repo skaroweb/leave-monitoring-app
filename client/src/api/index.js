@@ -30,7 +30,7 @@ export const leaveAPI = {
 
 export const extraWorkAPI = {
     getAll: () => api.get("/api/extrawork/all"),
-    getBalances: () => api.get("/api/extrawork/balances"),
+    getBalances: (params) => api.get("/api/extrawork/balances", { params }),
     create: (data) => api.post("/api/extrawork/create", data),
     update: (id, data) => api.put(`/api/extrawork/update/${id}`, data),
 };

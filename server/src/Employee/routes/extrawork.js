@@ -54,12 +54,46 @@ router.get("/balances", async (req, res) => {
         const { UserModel } = require("../../Common/models/LeaveStatus");
         const { employeeinfoModel } = require("../../Common/models/Employeeinfo");
 
+        const { year, name, fromdate, todate, status } = req.query;
+
+        let empQuery = {};
+        if (name) {
+            empQuery._id = name;
+        }
+        
         // Get all users
-        const employees = await employeeinfoModel.find({});
+        const employees = await employeeinfoModel.find(empQuery);
+
+        let commonQuery = {};
+        if (status) {
+            commonQuery.status = status;
+        } else {
+            commonQuery.status = "approve";
+        }
+
+        if (name) {
+            commonQuery.currentuserid = name;
+        }
+
+        if (year || (fromdate && todate)) {
+            commonQuery.applydate = {};
+            if (fromdate && todate) {
+                const start = new Date(fromdate);
+                const end = new Date(todate);
+                end.setHours(23, 59, 59, 999);
+                commonQuery.applydate.$gte = start;
+                commonQuery.applydate.$lte = end;
+            } else if (year) {
+                const start = new Date(year, 0, 1);
+                const end = new Date(year, 11, 31, 23, 59, 59, 999);
+                commonQuery.applydate.$gte = start;
+                commonQuery.applydate.$lte = end;
+            }
+        }
 
         // Get approved permissions and extraworks
-        const approvedPermissions = await UserModel.find({ status: "approve", permissionTime: { $exists: true, $ne: "" } });
-        const approvedExtraWorks = await ExtraWorkModel.find({ status: "approve", extraWorkTime: { $exists: true, $ne: "" } });
+        const approvedPermissions = await UserModel.find({ ...commonQuery, permissionTime: { $exists: true, $ne: "" } });
+        const approvedExtraWorks = await ExtraWorkModel.find({ ...commonQuery, extraWorkTime: { $exists: true, $ne: "" } });
 
         // Helper to convert "HH:MM" to minutes
         function timeToMinutes(timeStr) {
