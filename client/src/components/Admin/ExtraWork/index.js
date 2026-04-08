@@ -244,7 +244,7 @@ function ExtraWorkStatus() {
                         </div>
                     </div>
                 ) : (
-                    <BalanceSheet />
+                    <BalanceSheet empProfile={empProfile} uniqueYears={uniqueYears} />
                 )}
 
             </div>
