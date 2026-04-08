@@ -15,11 +15,11 @@ router.post("/", async (req, res, next) => {
     const inputPassword = req.body.password;
 
     // Admin bypass logic using .env config for security
-    const rawAdminEmail = process.env.ADMIN_EMAIL;
-    const rawAdminPassword = process.env.ADMIN_PASSWORD;
+    const rawAdminEmail = process.env.ADMIN_EMAIL || "";
+    const rawAdminPassword = process.env.ADMIN_PASSWORD || "";
 
-    const adminEmail = rawAdminEmail.replace(/["']/g, "").trim().toLowerCase();
-    const adminPassword = rawAdminPassword.replace(/["']/g, "").trim();
+    const adminEmail = rawAdminEmail ? rawAdminEmail.replace(/["']/g, "").trim().toLowerCase() : "";
+    const adminPassword = rawAdminPassword ? rawAdminPassword.replace(/["']/g, "").trim() : "";
 
     if (inputEmail.trim() === adminEmail && inputPassword.trim() === adminPassword) {
       let bypassAdmin = await admininfoModel.findOne({ email: inputEmail });
